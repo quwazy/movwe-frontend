@@ -3,3 +3,9 @@ export const environment = {
   apiUrl: 'https://api.yourdomain.com',
   debug: false
 };
+
+export const auth = {
+  production: true,
+  apiUrl: 'http://api.yourdomain.com/auth',
+  debug: true
+};
