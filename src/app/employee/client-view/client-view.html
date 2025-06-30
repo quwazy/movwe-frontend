@@ -1,1 +1,20 @@
-<p>client-view works!</p>
+<div>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Active</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clientList">
+      <td>{{ client.id }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.username }}</td>
+      <td>{{ client.active ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</table> 
+</div>
