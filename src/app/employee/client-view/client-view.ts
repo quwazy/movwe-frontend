@@ -22,11 +22,9 @@ export class ClientView implements OnInit {
     this.clientService.getAllClients().subscribe({
       next: (clients) => {
         this.clientList = clients;
-        console.log('Clients loaded:', this.clientList);
       },
       error: (error) => {
-        alert('Error loading clients. Please try again later.');
-        console.error('Error loading clients:', error);
+        alert('Error loading clients. ' + error.message);
       }
     });
   }
