@@ -4,3 +4,7 @@ export interface Client {
   username: string;
   active: boolean;
 }
+
+export interface LoginResponse {
+  token: string;
+}
