@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +9,4 @@ import { environment } from '../environments/environment';
 })
 export class App {
   protected title = 'movwe-frontend';
-  protected env = environment;
 }
