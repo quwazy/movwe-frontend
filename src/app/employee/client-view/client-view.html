@@ -1,20 +1,81 @@
 <div>
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Username</th>
-      <th>Active</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let client of clientList">
-      <td>{{ client.id }}</td>
-      <td>{{ client.email }}</td>
-      <td>{{ client.username }}</td>
-      <td>{{ client.active ? 'Yes' : 'No' }}</td>
-    </tr>
-  </tbody>
-</table> 
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <!-- component view -->
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>Client Preview</h1>
+    </div>
+
+    <div class="whole-view">
+      <!-- table view -->
+      <div class="left-view">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let client of clientList">
+                <td>{{ client.id }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.username }}</td>
+                <td>{{ client.active ? "Yes" : "No" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- search and single client preview -->
+      <div class="right-view">
+        <div class="search-bar">
+          <form class="d-flex" (ngSubmit)="onSearchById()" #idForm="ngForm">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search by id"
+              aria-label="Search"
+              required
+              [(ngModel)]="searchId"
+              name="searchId"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search by id
+            </button>
+          </form>
+          <form class="d-flex" (ngSubmit)="onSearchByEmail()" #emailForm="ngForm">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search by email"
+              aria-label="Search"
+              required
+              [(ngModel)]="searchEmail"
+              name="searchEmail"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search by email
+            </button>
+          </form>
+        </div>
+        <!-- Single Client Preview -->
+        <div class="preview">
+          <h5>Client Preview</h5>
+          <p><strong>ID:</strong> {{ selectedClient?.id }}</p>
+          <p><strong>Email:</strong> {{ selectedClient?.email }}</p>
+          <p><strong>Username:</strong> {{ selectedClient?.username }}</p>
+          <p>
+            <strong>Active:</strong> {{ selectedClient?.active ? "Yes" : "No" }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
