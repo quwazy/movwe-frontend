@@ -24,6 +24,10 @@ export class ClientView implements OnInit {
     this.loadClients();
   }
 
+  selectClient(client: Client): void {
+    this.selectedClient = client;
+  }
+
   onSearchById(): void {
     if(this.searchId != null){
       this.searchClientById(this.searchId);
