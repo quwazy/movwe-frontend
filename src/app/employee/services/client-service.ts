@@ -26,4 +26,29 @@ export class ClientService {
   getAllClients(): Observable<Array<Client>> {
     return this.http.get<Array<Client>>(this.apiUrl+"/getAll");
   }
+
+  // Active or deactivate a client
+  changeClientStatus(email: string): Observable<Client> {
+    return this.http.put<Client>(`${this.apiUrl}/active/${email}`, {});
+  }
+
+  // Delete a client by email
+  deleteClientByEmail(email: string): Observable<void> {
+    if (!email) {
+      throw new Error('Email is required to delete a client.');
+    }
+    return this.http.delete<void>(`${this.apiUrl}/deleteByEmail/${email}`);
+  }
+
+  // Delete a client by ID
+  // Not used in the current implementation
+  deleteClientById(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+  }
+
+  // Delete all clients
+  // Not used in the current implementation
+  deleteAllClients(): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/deleteAll`);
+  }
 }

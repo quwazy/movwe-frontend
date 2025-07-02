@@ -24,6 +24,33 @@ export class ClientView implements OnInit {
     this.loadClients();
   }
 
+  onSearchById(): void {
+    if(this.searchId != null){
+      this.searchClientById(this.searchId);
+      this.searchId = null;
+    }
+  }
+
+  onSearchByEmail(): void {
+    if(this.searchEmail != null){
+      this.searchClientByEmail(this.searchEmail);
+      this.searchEmail = "";
+    }
+  }
+
+  toggleActivation(): void {
+    if (this.selectedClient) {
+      this.changeStatus(this.selectedClient.email);
+    }
+  }
+
+  confirmDelete(): void {
+    const confirmed = confirm('Are you sure you want to delete this client?');
+    if (confirmed && this.selectedClient) {
+      this.deleteClientByEmail(this.selectedClient.email);
+    }
+  }
+
   private loadClients() {
     this.clientService.getAllClients().subscribe({
       next: (clients) => {
@@ -57,17 +84,29 @@ export class ClientView implements OnInit {
     });
   }
 
-  onSearchById(): void {
-    if(this.searchId != null){
-      this.searchClientById(this.searchId);
-      this.searchId = null;
-    }
+  private changeStatus(email: string): void {
+    this.clientService.changeClientStatus(email).subscribe({
+      next: () => {
+        if (this.selectedClient) {
+          this.selectedClient.active = !this.selectedClient.active;
+          this.selectedClient = null;
+        }
+      },
+      error: (err) => {
+        alert('Error updating client: ' + err.message);
+      }
+    });
   }
 
-  onSearchByEmail(): void {
-    if(this.searchEmail != null){
-      this.searchClientByEmail(this.searchEmail);
-      this.searchEmail = "";
-    }
+  private deleteClientByEmail(email: string): void {
+    this.clientService.deleteClientByEmail(email).subscribe({
+      next: () => {
+        alert('Client deleted successfully.');
+        this.selectedClient = null;
+      },
+      error: (err) => {
+        alert('Error deleting client: ' + err.message);
+      }
+    });
   }
 }

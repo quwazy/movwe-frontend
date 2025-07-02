@@ -50,7 +50,11 @@
               Search by id
             </button>
           </form>
-          <form class="d-flex" (ngSubmit)="onSearchByEmail()" #emailForm="ngForm">
+          <form
+            class="d-flex"
+            (ngSubmit)="onSearchByEmail()"
+            #emailForm="ngForm"
+          >
             <input
               class="form-control me-2"
               type="search"
@@ -74,6 +78,24 @@
           <p>
             <strong>Active:</strong> {{ selectedClient?.active ? "Yes" : "No" }}
           </p>
+
+          <div class="action-buttons mt-3">
+            <button
+              class="btn btn-danger me-2"
+              (click)="confirmDelete()"
+              [disabled]="!selectedClient"
+            >
+              Delete
+            </button>
+
+            <button
+              class="btn btn-warning"
+              (click)="toggleActivation()"
+              [disabled]="!selectedClient"
+            >
+              {{ selectedClient?.active ? "Deactivate" : "Activate" }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
