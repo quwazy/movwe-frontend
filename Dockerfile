@@ -1,4 +1,4 @@
-# Stage 1: Build Angular app
+# Stage 1: Build Angular app #
 FROM node:24-alpine AS build
 
 WORKDIR /app
@@ -10,10 +10,12 @@ COPY . .
 RUN npm run build 
 #-- --configuration=production 
 
-# Stage 2: Serve with Nginx
+# Stage 2: Serve with Nginx #
 FROM nginx:1.29-alpine AS serve
 
 WORKDIR /usr/share/nginx/html
+
+# Remove the default Nginx static files
 RUN rm -rf ./*
 
 COPY --from=build /app/dist/movwe-frontend/browser . 
