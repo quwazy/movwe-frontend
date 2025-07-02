@@ -1,1 +1,103 @@
-<p>employee-view works!</p>
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <!-- component view -->
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>Employees Preview</h1>
+    </div>
+
+    <div class="whole-view">
+      <!-- table view -->
+      <div class="left-view">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Role</th>
+                <th>Active</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                *ngFor="let employee of employeeList"
+                (click)="selectEmployee(employee)"
+              >
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.firstName }}</td>
+                <td>{{ employee.lastName }}</td>
+                <td>{{ employee.role }}</td>
+                <td>{{ employee.active ? "Yes" : "No" }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- search options and single employee preview -->
+      <div class="right-view">
+        <div class="search-bar">
+          <form class="d-flex" (ngSubmit)="onSearchById()" #idForm="ngForm">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search by id"
+              aria-label="Search"
+              required
+              [(ngModel)]="searchId"
+              name="searchId"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search by id
+            </button>
+          </form>
+          <form
+            class="d-flex"
+            (ngSubmit)="onSearchByEmail()"
+            #emailForm="ngForm"
+          >
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search by email"
+              aria-label="Search"
+              required
+              [(ngModel)]="searchEmail"
+              name="searchEmail"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search by email
+            </button>
+          </form>
+        </div>
+        <!-- Single Client Preview -->
+        <div class="preview">
+          <h5>Employee Preview</h5>
+          <p><strong>ID:</strong> {{ selectedEmployee?.id }}</p>
+          <p><strong>Email:</strong> {{ selectedEmployee?.email }}</p>
+          <p><strong>First Name:</strong> {{ selectedEmployee?.firstName }}</p>
+          <p><strong>Last Name:</strong> {{ selectedEmployee?.lastName }}</p>
+          <p><strong>Role:</strong> {{ selectedEmployee?.role }}</p>
+          <p>
+            <strong>Active:</strong>
+            {{ selectedEmployee?.active ? "Yes" : "No" }}
+          </p>
+
+          <button
+            class="btn btn-danger me-2"
+            (click)="confirmDelete()"
+            [disabled]="!selectedEmployee"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

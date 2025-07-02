@@ -107,6 +107,7 @@ export class ClientView implements OnInit {
       next: () => {
         alert('Client deleted successfully.');
         this.selectedClient = null;
+        this.loadClients();
       },
       error: (err) => {
         alert('Error deleting client: ' + err.message);
