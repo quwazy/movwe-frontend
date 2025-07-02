@@ -39,6 +39,7 @@ export class ClientView implements OnInit {
     if(this.searchEmail != null){
       this.searchClientByEmail(this.searchEmail);
       this.searchEmail = "";
+      this.selectedClient = null;
     }
   }
 

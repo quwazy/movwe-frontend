@@ -1,1 +1,91 @@
-<p>movie-view works!</p>
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>{{ label }}</h1>
+    </div>
+
+    <div class="whole-view">
+      <div class="left-view">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client Email</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>TrailerUrl</th>
+                <th>Type</th>
+                <th>Genre</th>
+                <th>Year of Release</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movie of movieList" (click)="selectMovie(movie)">
+                <td>{{ movie.movieId }}</td>
+                <td>{{ movie.clientEmail }}</td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.description }}</td>
+                <td>{{ movie.trailerUrl }}</td>
+                <td>{{ movie.type }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.yearOfRelease }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-view">
+        <!-- Movie details and actions will go here -->
+         <div class="search-bar">
+             <form
+            class="d-flex"
+            (ngSubmit)="onSearchByEmail()"
+            #emailForm="ngForm"
+          >
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search by email"
+              aria-label="Search"
+              required
+              [(ngModel)]="searchEmail"
+              name="searchEmail"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search by email
+            </button>
+          </form>
+         </div>
+        <div class="preview">
+          <h5>Movie Preview</h5>
+          <p><strong>ID:</strong> {{ selectedMovie?.movieId }}</p>
+          <p><strong>Client Email:</strong> {{ selectedMovie?.clientEmail }}</p>
+          <p><strong>Title:</strong> {{ selectedMovie?.title }}</p>
+          <p><strong>Description:</strong> {{ selectedMovie?.description }}</p>
+          <p><strong>Trailer URL:</strong> {{ selectedMovie?.trailerUrl }}</p>
+          <p><strong>Type:</strong> {{ selectedMovie?.type }}</p>
+          <p><strong>Genre:</strong> {{ selectedMovie?.genre }}</p>
+          <p>
+            <strong>Year of Release:</strong> {{ selectedMovie?.yearOfRelease }}
+          </p>
+
+          <div class="action-buttons mt-3">
+            <button
+              class="btn btn-danger me-2"
+              (click)="confirmDelete()"
+              [disabled]="!selectedMovie"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
