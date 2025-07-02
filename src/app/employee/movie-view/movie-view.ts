@@ -16,13 +16,13 @@ export class MovieView implements OnInit {
   protected movieList: Array<Movie> = [];
 
   searchEmail: string | null = null;
-  label: string = "Movie List";
+  label: string = "Movie Preview";
 
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.loadMovies();
-    this.label = "Movie List";
+    this.label = "Movie Preview";
   }
 
   selectMovie(movie: Movie): void {
