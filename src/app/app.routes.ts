@@ -5,9 +5,15 @@ import { ClientView } from './employee/client-view/client-view';
 import { EmployeeView } from './employee/employee-view/employee-view';
 import { MovieView } from './employee/movie-view/movie-view';
 
+import { MovieViewClient } from './client/movie-view/movie-view';
+
 export const routes: Routes = [
+  {
+    path: 'movie-view-client',
+    component: MovieViewClient
+  },
   { 
-    path: '',
+    path: 'employee-login',
     component: LoginView 
   },
   {
