@@ -14,22 +14,16 @@
           <table>
             <thead>
               <tr>
-                <th>ID</th>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Year of Release</th>
-                <th>Trailer URL</th>
                 <th>Type</th>
                 <th>Genre</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let movie of movies" (click)="selectMovie(movie)">
-                <td>{{ movie.id }}</td>
                 <td>{{ movie.title }}</td>
-                <td>{{ movie.description }}</td>
                 <td>{{ movie.yearOfRelease }}</td>
-                <td>{{ movie.trailerUrl }}</td>
                 <td>{{ movie.type }}</td>
                 <td>{{ movie.genre }}</td>
               </tr>
@@ -47,7 +41,7 @@
           <p>
             <strong>Year of Release:</strong> {{ selectedMovie?.yearOfRelease }}
           </p>
-          <p><strong>Trailer URL:</strong> {{ selectedMovie?.trailerUrl }}</p>
+          <p><strong>Trailer URL:</strong> <a [href]="selectedMovie?.trailerUrl" target="_blank">{{ selectedMovie?.trailerUrl }}</a></p>
           <p><strong>Type:</strong> {{ selectedMovie?.type }}</p>
           <p><strong>Genre:</strong> {{ selectedMovie?.genre }}</p>
 
