@@ -15,7 +15,7 @@ export class LoginView {
   protected email: string = '';
   protected password: string = '';
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   login() {
     const credentials = { 
@@ -23,10 +23,10 @@ export class LoginView {
       password: this.password 
     };
 
-    return this.http.post<LoginResponse>(this.authService.employeeApiUrl, credentials).subscribe({
+    return this.http.post<LoginResponse>(this.authService.clientApiUrl, credentials).subscribe({
       next: (response) => {
         this.authService.setToken(response.token);
-        this.router.navigate(['/client-view']);
+        this.router.navigate(['/movie-view-client']);
       },
       error: (error) => {
         alert('Login failed. Please check your credentials.' + error.message);
