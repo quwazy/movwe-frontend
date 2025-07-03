@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginResponse } from '../../auth/auth.interface';
 import { AuthService } from '../../auth/auth-service';
 
 @Component({
@@ -15,15 +13,12 @@ export class LoginView {
   protected email: string = '';
   protected password: string = '';
 
-  constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   login() {
-    const credentials = { 
-      email: this.email, 
-      password: this.password 
-    };
+    this.authService.clearToken();
 
-    return this.http.post<LoginResponse>(this.authService.clientApiUrl, credentials).subscribe({
+    this.authService.loginClient(this.email, this.password).subscribe({
       next: (response) => {
         this.authService.setToken(response.token);
         this.router.navigate(['/movie-view-client']);
