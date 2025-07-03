@@ -7,3 +7,12 @@ export interface Movie {
   type: string;
   genre: string;
 }
+
+export interface AddMovie {
+  title: string | null;
+  description: string | null;
+  yearOfRelease: string | null;
+  trailerUrl: string | null;
+  type: string | null;
+  genre: string | null;
+}

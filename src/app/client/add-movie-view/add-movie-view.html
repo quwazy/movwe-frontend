@@ -1,1 +1,53 @@
-<p>add-movie-view works!</p>
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>Add Movie</h1>
+    </div>
+
+    <div class="whole-view">
+      <form (ngSubmit)="addMovie()" #addMovieForm="ngForm">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" [(ngModel)]="title" required /><br /><br />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" [(ngModel)]="description"></textarea><br /><br />
+
+        <label for="yearOfRelease">Year of Release:</label>
+        <input
+          type="text"
+          id="yearOfRelease"
+          name="yearOfRelease"
+          [(ngModel)]="yearOfRelease"
+          minlength="4"
+          maxlength="4"
+        /><br /><br />
+
+        <label for="trailerUrl">Trailer URL:</label>
+        <input type="url" id="trailerUrl" name="trailerUrl" [(ngModel)]="trailerUrl" minlength="12" /><br /><br />
+
+        <label for="type">Type:</label>
+        <select id="type" name="type" [(ngModel)]="type">
+          <option value="MOVIE">MOVIE</option>
+          <option value="SERIES">SERIES</option></select
+        ><br /><br />
+
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre" [(ngModel)]="genre">
+          <option value="ACTION">ACTION</option>
+          <option value="COMEDY">COMEDY</option>
+          <option value="DRAMA">DRAMA</option>
+          <option value="FANTASY">FANTASY</option>
+          <option value="HORROR">HORROR</option>
+          <option value="ROMANCE">ROMANCE</option>
+          <option value="THRILLER">THRILLER</option></select
+        ><br /><br />
+
+        <button type="submit">Add Movie</button>
+      </form>
+    </div>
+  </div>
+</div>
