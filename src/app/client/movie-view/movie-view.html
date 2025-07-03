@@ -1,1 +1,58 @@
-<p>movie-view works!</p>
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>My Movies</h1>
+    </div>
+
+    <div class="whole-view">
+      <div class="left-view">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Year of Release</th>
+                <th>Trailer URL</th>
+                <th>Type</th>
+                <th>Genre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movie of movies">
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.description }}</td>
+                <td>{{ movie.yearOfRelease }}</td>
+                <td>{{ movie.trailerUrl }}</td>
+                <td>{{ movie.type }}</td>
+                <td>{{ movie.genre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-view">
+        <!-- Additional content can go here -->
+        <div class="preview">
+          <h5>Movie Preview</h5>
+          <p><strong>ID:</strong> {{ selectedMovie?.id }}</p>
+          <p><strong>Title:</strong> {{ selectedMovie?.title }}</p>
+          <p><strong>Description:</strong> {{ selectedMovie?.description }}</p>
+          <p>
+            <strong>Year of Release:</strong> {{ selectedMovie?.yearOfRelease }}
+          </p>
+          <p><strong>Trailer URL:</strong> {{ selectedMovie?.trailerUrl }}</p>
+          <p><strong>Type:</strong> {{ selectedMovie?.type }}</p>
+          <p><strong>Genre:</strong> {{ selectedMovie?.genre }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

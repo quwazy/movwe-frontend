@@ -9,7 +9,7 @@ import { AuthService } from '../../auth/auth-service';
   templateUrl: './login-view.html',
   styleUrl: './login-view.css'
 })
-export class LoginView {
+export class LoginViewClient{
   protected email: string = '';
   protected password: string = '';
 
