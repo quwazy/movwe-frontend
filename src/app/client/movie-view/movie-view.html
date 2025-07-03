@@ -41,7 +41,15 @@
           <p>
             <strong>Year of Release:</strong> {{ selectedMovie?.yearOfRelease }}
           </p>
-          <p><strong>Trailer URL:</strong> <a [href]="selectedMovie?.trailerUrl" target="_blank">{{ selectedMovie?.trailerUrl }}</a></p>
+          <p><strong>Trailer: </strong></p>       
+          <iframe 
+            *ngIf="selectedMovie"
+            [id]="selectedMovie.id"
+            [title]="selectedMovie.title"
+            width="300"
+            height="200"
+            [src]="selectedMovie.trailerUrl | embedMoviePipe"
+          ></iframe>
           <p><strong>Type:</strong> {{ selectedMovie?.type }}</p>
           <p><strong>Genre:</strong> {{ selectedMovie?.genre }}</p>
 

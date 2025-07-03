@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MovieService } from '../services/movie-service';
 import { Movie } from '../models/movie.interface';
 import { NavBar } from '../nav-bar/nav-bar';
+import { EmbedMoviePipePipe } from '../pipes/embed-movie-pipe-pipe';
 
 @Component({
   selector: 'app-movie-view',
-  imports: [CommonModule, NavBar],
+  imports: [CommonModule, NavBar, EmbedMoviePipePipe],
   templateUrl: './movie-view.html',
   styleUrl: './movie-view.css'
 })
