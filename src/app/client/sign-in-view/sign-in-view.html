@@ -1,1 +1,92 @@
-<p>sign-in-view works!</p>
+<div>
+  <div class="container mt-4">
+    <div>
+        <h2>Sign Up</h2>
+        <p>Please fill in the form below to create a new account.</p>
+    </div>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label>Email*</label>
+        <input class="form-control" formControlName="email" type="email" />
+        <div
+          *ngIf="
+            signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid
+          "
+          class="text-danger"
+        >
+          Valid email is required.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Password*</label>
+        <input
+          class="form-control"
+          formControlName="password"
+          type="password"
+        />
+        <div
+          *ngIf="
+            signUpForm.get('password')?.touched &&
+            signUpForm.get('password')?.invalid
+          "
+          class="text-danger"
+        >
+          Password must be at least 5 characters.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label>Username*</label>
+        <input class="form-control" formControlName="username" type="text" />
+        <div
+          *ngIf="
+            signUpForm.get('username')?.touched &&
+            signUpForm.get('username')?.invalid
+          "
+          class="text-danger"
+        >
+          Username is required.
+        </div>
+      </div>
+
+      <div formGroupName="address">
+        <div class="mb-3">
+          <label>Street</label>
+          <input class="form-control" formControlName="street" />
+        </div>
+
+        <div class="mb-3">
+          <label>City</label>
+          <input class="form-control" formControlName="city" />
+        </div>
+
+        <div class="mb-3">
+          <label>State</label>
+          <input class="form-control" formControlName="state" />
+        </div>
+
+        <div class="mb-3">
+          <label>ZIP Code</label>
+          <input class="form-control" formControlName="zip" />
+        </div>
+
+        <div class="mb-3">
+          <label>Phone</label>
+          <input class="form-control" formControlName="phone" />
+          <div
+            *ngIf="
+              signUpForm.get('address.phone')?.touched &&
+              signUpForm.get('address.phone')?.invalid
+            "
+            class="text-danger"
+          >
+            Valid phone number is required.
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" type="submit">Sign Up</button>
+    </form>
+  </div>
+</div>

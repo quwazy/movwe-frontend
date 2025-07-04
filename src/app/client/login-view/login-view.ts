@@ -28,4 +28,8 @@ export class LoginViewClient{
       }
     });
   }
+
+  signUp() {
+    this.router.navigate(['/sign-in']);
+  }
 }

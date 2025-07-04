@@ -6,6 +6,7 @@ import { EmployeeView } from './employee/employee-view/employee-view';
 import { MovieView } from './employee/movie-view/movie-view';
 
 import { LoginViewClient } from './client/login-view/login-view';
+import { SignInView } from './client/sign-in-view/sign-in-view';
 import { MovieViewClient } from './client/movie-view/movie-view';
 import { AddMovieView } from './client/add-movie-view/add-movie-view';
 import { FriendView } from './client/friend-view/friend-view';
@@ -16,6 +17,10 @@ export const routes: Routes = [
   {
     path: '',
     component: LoginViewClient
+  },
+  {
+    path: 'sign-in',
+    component: SignInView
   },
   {
     path: 'movie-view-client',
