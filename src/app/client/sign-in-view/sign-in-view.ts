@@ -30,12 +30,12 @@ export class SignInView {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      this.authService.addClient(this.signUpForm.value).subscribe({
+      this.authService.createClient(this.signUpForm.value).subscribe({
         next: (response) => {
           this.router.navigate(['/']);
         },
         error: (error) => {
-          console.error('Error adding client:', error);
+          console.error('Error creating client:', error);
         }
       });
     } else {

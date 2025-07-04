@@ -32,7 +32,6 @@ export class MovieViewClient implements OnInit {
     if (confirmed && this.selectedMovie) {
       this.movieService.deleteMovie(this.selectedMovie.id).subscribe({
         next: () => {
-          alert('Movie deleted successfully!');
           this.movies = this.movies.filter(movie => movie.id !== this.selectedMovie?.id);
           this.selectedMovie = null;
         },

@@ -14,7 +14,7 @@ export class EmployeeService {
 
   //Get an employee by ID
   getEmployeeById(id: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.apiUrl+"/get/"}${id}`);
+    return this.http.get<Employee>(`${this.apiUrl+"/getById/"}${id}`);
   }
 
   // Get an employee by email

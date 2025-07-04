@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { auth } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LoginResponse } from './auth.interface';
-import { AddClient } from '../client/models/client.interface';
 import { Observable } from 'rxjs';
+import { auth } from '../../environments/environment';
+import { LoginRequest, LoginResponse, CreateClient } from './auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +10,25 @@ import { Observable } from 'rxjs';
 export class AuthService {
   public readonly employeeApiUrl: string = `${auth.apiUrl}/employee`;
   public readonly clientApiUrl: string = `${auth.apiUrl}/client`;
-  public readonly addClientApiUrl: string = `${auth.apiUrl}/addClient`;
+  public readonly createClientApiUrl: string = `${auth.apiUrl}/createClient`;
 
   constructor(private http: HttpClient) {}
 
-  // Add a new Client
-  addClient(client: AddClient): Observable<any> {
-    return this.http.post(`${this.addClientApiUrl}`, client);
-  }
-
   loginClient(email: string, password: string): Observable<LoginResponse> {
-    const credentials = { email, password };
-    return this.http.post<LoginResponse>(this.clientApiUrl, credentials);
+    this.clearToken();
+    const loginRequest: LoginRequest = { email, password };
+    return this.http.post<LoginResponse>(this.clientApiUrl, loginRequest);
   }
 
   loginEmployee(email: string, password: string): Observable<LoginResponse> {
-    const credentials = { email, password };
-    return this.http.post<LoginResponse>(this.employeeApiUrl, credentials);
+    this.clearToken();
+    const loginRequest: LoginRequest = { email, password };
+    return this.http.post<LoginResponse>(this.employeeApiUrl, loginRequest);
+  }
+
+  createClient(client: CreateClient): Observable<any> {
+    this.clearToken();
+    return this.http.post(`${this.createClientApiUrl}`, client);
   }
 
   setToken(jwt: string) {

@@ -15,12 +15,12 @@ export class MovieService {
   // Get a movie by ID
   // Not used in the current implementation
   getMovieById(id: number): Observable<Movie> {
-    return this.http.get<Movie>(`${this.apiUrl}/get/${id}`);
+    return this.http.get<Movie>(`${this.apiUrl}/getById/${id}`);
   }
 
   // Get a movie by client's email
   getMovieByEmail(email: string): Observable<Array<Movie>> {
-    return this.http.get<Array<Movie>>(`${this.apiUrl}/getAllByClient/${email}`);
+    return this.http.get<Array<Movie>>(`${this.apiUrl}/getByEmail/${email}`);
   }
 
   // Get all movies
@@ -30,6 +30,6 @@ export class MovieService {
 
   // Delete movie by ID
   deleteMovieById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/deleteById/${id}`);
   }
 }

@@ -14,7 +14,7 @@ export class ClientService {
 
   // Get a client by ID
   getClientById(id: number): Observable<Client> {
-    return this.http.get<Client>(`${this.apiUrl+"/get/"}${id}`);
+    return this.http.get<Client>(`${this.apiUrl+"/getById/"}${id}`);
   }
 
   // Get a client by email
@@ -43,7 +43,7 @@ export class ClientService {
   // Delete a client by ID
   // Not used in the current implementation
   deleteClientById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/deleteById/${id}`);
   }
 
   // Delete all clients
