@@ -16,3 +16,7 @@ export interface AddMovie {
   type: string | null;
   genre: string | null;
 }
+
+export interface Friend {
+  username: string;
+}
