@@ -33,35 +33,50 @@
       </div>
 
       <div class="right-view">
-        <!-- Additional content can go here -->
         <div class="preview">
-          <h5>Movie Preview</h5>
-          <p><strong>Title:</strong> {{ selectedMovie?.title }}</p>
-          <p><strong>Description:</strong> {{ selectedMovie?.description }}</p>
-          <p>
-            <strong>Year of Release:</strong> {{ selectedMovie?.yearOfRelease }}
-          </p>
-          <p><strong>Trailer: </strong></p>       
-          <iframe 
-            *ngIf="selectedMovie"
-            [id]="selectedMovie.id"
-            [title]="selectedMovie.title"
-            width="300"
-            height="200"
-            [src]="selectedMovie.trailerUrl | embedMoviePipe"
-          ></iframe>
-          <p><strong>Type:</strong> {{ selectedMovie?.type }}</p>
-          <p><strong>Genre:</strong> {{ selectedMovie?.genre }}</p>
-
-          <div class="action-buttons mt-3">
-            <button
-              class="btn btn-danger me-2"
-              (click)="confirmDelete()"
-              [disabled]="!selectedMovie"
-            >
-              Delete
-            </button>
+          <div *ngIf="!selectedMovie" class="preview-center">
+            <h4>Movie Preview</h4>
+            <p>(select movie from table to view details)</p>
           </div>
+          <ng-container *ngIf="selectedMovie">
+            <h4 class="preview-title text-center">Movie Preview</h4>
+            <hr />
+            <p>
+              <strong>Title:</strong> {{ selectedMovie.title }} ({{
+                selectedMovie.yearOfRelease
+              }})
+            </p>
+            <p><strong>Description:</strong> {{ selectedMovie.description }}</p>
+            <div class="movie-details-row d-flex gap-4 mb-2">
+              <span><strong>Type:</strong> {{ selectedMovie.type }}</span>
+              <span><strong>Genre:</strong> {{ selectedMovie.genre }}</span>
+            </div>
+            <div class="iframe-center">
+              <iframe
+                [id]="selectedMovie.id"
+                [title]="selectedMovie.title"
+                width="300"
+                height="200"
+                [src]="selectedMovie.trailerUrl | embedMoviePipe"
+              ></iframe>
+            </div>
+            <div class="action-buttons mt-3">
+              <button
+                class="btn btn-primary me-2"
+                (click)="editMovie()"
+                [disabled]="!selectedMovie"
+              >
+                Edit
+              </button>
+              <button
+                class="btn btn-danger me-2"
+                (click)="confirmDelete()"
+                [disabled]="!selectedMovie"
+              >
+                Delete
+              </button>
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>

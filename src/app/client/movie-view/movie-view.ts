@@ -24,8 +24,12 @@ export class MovieViewClient implements OnInit {
   }
 
   selectMovie(movie: Movie): void {
-      this.selectedMovie = movie;
-    }
+    this.selectedMovie = movie;
+  }
+
+  editMovie(): void {
+    
+  }
 
   confirmDelete(): void {
     const confirmed = confirm('Are you sure you want to delete this movie?');
