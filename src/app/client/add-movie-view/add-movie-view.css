@@ -1,9 +1,31 @@
-
 .under-nav-bar{
-    max-width: 50%;
+    max-width: 500px;
+  width: 100%;
 }
 
 .form-group{
     margin-top: 1rem;
     margin-bottom: 1rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group.flex-fill {
+  flex: 1 1 0;
+}
+
+.center-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
