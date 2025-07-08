@@ -18,6 +18,11 @@ export class MovieService {
     return this.http.get<Array<Movie>>(`${this.apiUrl}/getAllMovies`);
   }
 
+  // Get all movies of a specific client
+  getAllFriendsMovies(username: string): Observable<Array<Movie>> {
+    return this.http.get<Array<Movie>>(`${this.apiUrl}/getAllFriendsMovies/${username}`);
+  }
+
   // Add a new movie
   addMovie(movie: AddMovie): Observable<any> {
     return this.http.post(`${this.apiUrl}/addMovie`, movie);

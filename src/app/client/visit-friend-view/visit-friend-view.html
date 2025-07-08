@@ -1,0 +1,71 @@
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+
+  <div class="under-nav-bar">
+    <div class="header">
+      <h1>{{ username }}'s movies list</h1>
+    </div>
+
+    <div class="whole-view">
+      <div class="left-view">
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Year of Release</th>
+                <th>Type</th>
+                <th>Genre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movie of movies" (click)="selectMovie(movie)">
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.yearOfRelease }}</td>
+                <td>{{ movie.type }}</td>
+                <td>{{ movie.genre }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="right-view">
+        <div class="preview">
+          <div *ngIf="!selectedMovie" class="preview-center">
+            <h4>Movie Preview</h4>
+            <p>(select movie from table to view details)</p>
+          </div>
+          <ng-container *ngIf="selectedMovie">
+            <h4 class="preview-title text-center">Movie Preview</h4>
+            <hr />
+            <p>
+              <strong>Title:</strong> {{ selectedMovie.title }} ({{
+                selectedMovie.yearOfRelease
+              }})
+            </p>
+            <p><strong>Description:</strong> {{ selectedMovie.description }}</p>
+            <div class="movie-details-row d-flex gap-4 mb-2">
+              <span><strong>Type:</strong> {{ selectedMovie.type }}</span>
+              <span><strong>Genre:</strong> {{ selectedMovie.genre }}</span>
+            </div>
+            <div class="iframe-center">
+              <iframe
+                [id]="selectedMovie.id"
+                [title]="selectedMovie.title"
+                width="300"
+                height="200"
+                [src]="selectedMovie.trailerUrl | embedMoviePipe"
+              ></iframe>
+            </div>
+            <div class="action-buttons mt-3">
+              <!-- comment button -->
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

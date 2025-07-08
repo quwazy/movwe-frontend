@@ -1,0 +1,39 @@
+.movie-details-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.preview-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 250px;
+  text-align: center;
+}
+
+.iframe-center {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.preview {
+  font-size: 1.05rem;
+}
+
+.preview-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem; ;
+}
+
+hr {
+  margin: 0.5rem 0 1rem 0;
+  border: none;
+  border-top: 2px solid #bbb;
+  width: 100%;
+}

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FriendService } from '../tools/services/friends-service';
 import { SingleFriendView } from '../single-friend-view/single-friend-view';
 import { Friend } from '../tools/models/movie.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friend-view',
@@ -14,7 +15,7 @@ import { Friend } from '../tools/models/movie.interface';
 export class FriendView {
   friends: Array<Friend> = [];
 
-  constructor(private friendService: FriendService) { }
+  constructor(private friendService: FriendService, private router: Router) { }
 
   ngOnInit() {
     this.loadFriends();
@@ -32,13 +33,13 @@ export class FriendView {
   }
 
   viewFriend(friend: Friend) {
-    console.log('View friend:', friend);
+    this.router.navigate(['/visit-friend', friend.username]);
   }
 
   removeFriend(friend: Friend) {
     this.friendService.removeFriend(friend).subscribe({
       next: () => {
-        this.loadFriends(); // Refresh list after removal
+        this.loadFriends();
       },
       error: (err) => {
         console.error('Error removing friend:', err);
