@@ -1,0 +1,14 @@
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="friendList">
+    <app-single-friend-view
+      *ngFor="let friend of friends"
+      [friend]="friend"
+      context="remove"
+      (viewFriend)="viewFriend(friend)"
+      (removeFriend)="removeFriend(friend)"
+    ></app-single-friend-view>
+  </div>
+</div>

@@ -9,7 +9,7 @@ import { LoginViewClient } from './client/login-view/login-view';
 import { SignInView } from './client/sign-in-view/sign-in-view';
 import { MovieViewClient } from './client/movie-view/movie-view';
 import { AddMovieView } from './client/add-movie-view/add-movie-view';
-import { FriendView } from './client/friend-view/friend-view';
+import { FriendView } from './client/friend-list-view/friend-view';
 import { SearchFriendView } from './client/search-friend-view/search-friend-view';
 
 export const routes: Routes = [
