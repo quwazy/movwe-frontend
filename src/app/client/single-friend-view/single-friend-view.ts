@@ -1,26 +1,31 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FriendService } from '../services/friends-service';
+import { CommonModule } from '@angular/common';
+import { Friend } from '../models/movie.interface';
 
 @Component({
   selector: 'app-single-friend-view',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './single-friend-view.html',
   styleUrl: './single-friend-view.css'
 })
 export class SingleFriendView {
-  @Input() username: string = '';
+  page: number = 0;
+  @Input() friend: Friend = { username: '', email: '' };
+  @Input() context: 'remove' | 'search' = 'remove';
 
-  @Output() viewFriend = new EventEmitter<string>();
-  @Output() removeFriend = new EventEmitter<string>();
-
-  constructor(private friendService: FriendService) { }
+  @Output() viewFriend = new EventEmitter<Friend>();
+  @Output() addFriend = new EventEmitter<Friend>();
+  @Output() removeFriend = new EventEmitter<Friend>();
 
   onViewFriend() {
-    this.viewFriend.emit(this.username);
+    this.viewFriend.emit(this.friend);
   }
 
-  //remove friend
+  onAddFriend() {
+    this.addFriend.emit(this.friend);
+  }
+
   onRemoveFriend() {
-    this.removeFriend.emit(this.username);
+    this.removeFriend.emit(this.friend);
   }
 }

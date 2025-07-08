@@ -17,8 +17,18 @@ export class FriendService {
     return this.http.get<Array<Friend>>(`${this.apiUrl}/getFriendList`);
   }
 
-  removeFriend(username: string): Observable<void> {
-    const dto: Friend = { username };
-    return this.http.delete<void>(`${this.apiUrl}/removeFriend`, { body: dto });
+  // Add a friend to client
+  addFriend(friend: Friend): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/addFriend`, friend);
+  }
+
+  // Search for a new friend by username
+  searchFriend(username: string): Observable<Array<Friend>> {
+    return this.http.get<Array<Friend>>(`${this.apiUrl}/searchFriend/${username}`);
+  }
+
+  // Remove a friend from client
+  removeFriend(friend: Friend): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/removeFriend`, { body: friend });
   }
 }

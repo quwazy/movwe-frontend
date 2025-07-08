@@ -31,20 +31,18 @@ export class FriendView {
     });
   }
 
-  viewFriend(username: string) {
-    // Handle view friend logic here
-    console.log('View friend:', username);
+  viewFriend(friend: Friend) {
+    console.log('View friend:', friend);
   }
 
-  removeFriend(username: string) {
-      // Handle remove friend logic here
-      this.friendService.removeFriend(username).subscribe({
-        next: () => {
-          this.loadFriends(); // Refresh list after removal
-        },
-        error: (err) => {
-          console.error('Error removing friend:', err);
-        }
+  removeFriend(friend: Friend) {
+    this.friendService.removeFriend(friend).subscribe({
+      next: () => {
+        this.loadFriends(); // Refresh list after removal
+      },
+      error: (err) => {
+        console.error('Error removing friend:', err);
+      }
       });
     }
 }

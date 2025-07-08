@@ -18,5 +18,6 @@ export interface AddMovie {
 }
 
 export interface Friend {
+  email: string;
   username: string;
 }

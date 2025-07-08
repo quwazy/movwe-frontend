@@ -1,12 +1,28 @@
 <div>
-  <div class="single-friend-container">
+  <div
+    class="single-friend-container"
+    (click)="onViewFriend()"
+    style="cursor: pointer;"
+  >
     <div class="friend-info">
       <img class="friend-avatar" src="/assets/default-user-avatar.jpg" />
-      <span>{{ username }}</span>
+      <span>{{ friend.username }}</span>
     </div>
     <div>
-      <button class="btn btn-primary me-2" (click)="onViewFriend()">View</button>
-      <button class="btn btn-danger" (click)="onRemoveFriend()">Remove</button>
+      <button
+        class="btn btn-primary me-2"
+        (click)="onAddFriend(); $event.stopPropagation()"
+        *ngIf="context === 'search'"
+      >
+        Add
+      </button>
+      <button
+        class="btn btn-danger"
+        (click)="onRemoveFriend(); $event.stopPropagation()"
+        *ngIf="context === 'remove'"
+      >
+        Remove
+      </button>
     </div>
   </div>
 </div>

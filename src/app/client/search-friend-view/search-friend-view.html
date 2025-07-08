@@ -1,1 +1,24 @@
-<p>search-friend-view works!</p>
+<div>
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="search-bar">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search for a friend..."
+      [(ngModel)]="searchBar"
+      (input)="searchFriends()"
+    />
+  </div>
+
+  <div class="friendList">
+    <app-single-friend-view
+      *ngFor="let friend of friends"
+      [friend]="friend"
+      context="search"
+      (viewFriend)="viewFriend(friend)"
+      (addFriend)="addFriend(friend)"
+    ></app-single-friend-view>
+  </div>
+</div>

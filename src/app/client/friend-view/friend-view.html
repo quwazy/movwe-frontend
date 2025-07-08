@@ -1,13 +1,14 @@
 <div>
-    <div>
-        <app-nav-bar></app-nav-bar>
-    </div>
-    <div class="friendList">
+  <div>
+    <app-nav-bar></app-nav-bar>
+  </div>
+  <div class="friendList">
     <app-single-friend-view
       *ngFor="let friend of friends"
-      [username]="friend.username"
-      (viewFriend)="viewFriend(friend.username)"
-      (removeFriend)="removeFriend(friend.username)"
+      [friend]="friend"
+      context="remove"
+      (viewFriend)="viewFriend(friend)"
+      (removeFriend)="removeFriend(friend)"
     ></app-single-friend-view>
   </div>
 </div>
