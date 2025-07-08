@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavBar } from "../nav-bar/nav-bar";
+import { NavBar } from "../nav-bar-view/nav-bar";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { FriendService } from '../services/friends-service';
-import { Friend } from '../models/movie.interface';
+import { FriendService } from '../tools/services/friends-service';
+import { Friend } from '../tools/models/movie.interface';
 import { SingleFriendView } from '../single-friend-view/single-friend-view';
 
 @Component({

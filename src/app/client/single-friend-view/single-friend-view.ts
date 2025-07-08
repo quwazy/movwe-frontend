@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Friend } from '../models/movie.interface';
+import { Friend } from '../tools/models/movie.interface';
 
 @Component({
   selector: 'app-single-friend-view',

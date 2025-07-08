@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MovieService } from '../services/movie-service';
-import { AddMovie } from '../models/movie.interface';
-import { NavBar } from '../nav-bar/nav-bar';
+import { MovieService } from '../tools/services/movie-service';
+import { AddMovie } from '../tools/models/movie.interface';
+import { NavBar } from '../nav-bar-view/nav-bar';
 
 @Component({
   selector: 'app-add-movie-view',

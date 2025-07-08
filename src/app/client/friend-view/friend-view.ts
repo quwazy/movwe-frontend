@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavBar } from '../nav-bar/nav-bar';
+import { NavBar } from '../nav-bar-view/nav-bar';
 import { CommonModule } from '@angular/common';
-import { FriendService } from '../services/friends-service';
+import { FriendService } from '../tools/services/friends-service';
 import { SingleFriendView } from '../single-friend-view/single-friend-view';
-import { Friend } from '../models/movie.interface';
+import { Friend } from '../tools/models/movie.interface';
 
 @Component({
   selector: 'app-friend-view',

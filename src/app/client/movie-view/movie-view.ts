@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MovieService } from '../services/movie-service';
-import { Movie } from '../models/movie.interface';
-import { NavBar } from '../nav-bar/nav-bar';
-import { EmbedMoviePipePipe } from '../pipes/embed-movie-pipe-pipe';
+import { MovieService } from '../tools/services/movie-service';
+import { Movie } from '../tools/models/movie.interface';
+import { NavBar } from '../nav-bar-view/nav-bar';
+import { EmbedMoviePipePipe } from '../tools/pipes/embed-movie-pipe-pipe';
 
 @Component({
   selector: 'app-movie-view',
