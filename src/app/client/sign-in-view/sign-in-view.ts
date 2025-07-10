@@ -11,26 +11,37 @@ import { AuthService } from '../../auth/auth-service';
   styleUrl: './sign-in-view.css'
 })
 export class SignInView {
-  signUpForm: FormGroup;
+  signInForm: FormGroup;
+  passwordMismatch = false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.signUpForm = this.fb.group({
+    this.signInForm = this.fb.group({
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      username: ['', Validators.required],
-      address: this.fb.group({
-        street: [''],
-        city: ['', ],
-        state: ['', ],
-        zip: ['',],
-        phone: ['', [ Validators.pattern(/^\+?[0-9]{7,}$/)]]
-      })
+      confirmPassword: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    if (this.signUpForm.valid) {
-      this.authService.createClient(this.signUpForm.value).subscribe({
+    const { password, confirmPassword, ...formData } = this.signInForm.value;
+
+    if (password !== confirmPassword) {
+      this.passwordMismatch = true;
+      return;
+    }
+
+    this.passwordMismatch = false;
+
+    // Only sending username, email, and password
+    const dataToSend = {
+      username: formData.username,
+      email: formData.email,
+      password: password
+    };
+
+    if (this.signInForm.valid) {
+      this.authService.createClient(this.signInForm.value).subscribe({
         next: (response) => {
           this.router.navigate(['/']);
         },
@@ -39,7 +50,7 @@ export class SignInView {
         }
       });
     } else {
-      this.signUpForm.markAllAsTouched();
+      this.signInForm.markAllAsTouched();
     }
   }
 }
