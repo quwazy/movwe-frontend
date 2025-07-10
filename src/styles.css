@@ -1,3 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+
+.left-div,
+.right-div {
+  width: calc((100vw - 1600px) / 2);
+  background-color: #17252a;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.mx-auto {
+  width: 1600px;
+  background-color: #def2f1;
+  /* min-height: 100vh; */
+  padding: 40px;
+  box-sizing: border-box;
+}
+
 .under-nav-bar {
   padding: 20px;
 }
