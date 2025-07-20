@@ -4,24 +4,22 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth-service';
 
 @Component({
-  selector: 'app-login-view',
+  selector: 'app-login',
   imports: [FormsModule],
-  templateUrl: './login-view.html',
-  styleUrl: './login-view.css'
+  templateUrl: './login.html',
+  styleUrl: './login.css'
 })
-export class LoginView {
+export class Login {
   protected email: string = '';
   protected password: string = '';
 
   constructor(private router: Router, private authService: AuthService) { }
 
   login() {
-    this.authService.clearToken();
-
     this.authService.loginModerator(this.email, this.password).subscribe({
       next: (response) => {
         this.authService.setToken(response.token);
-        this.router.navigate(['/client-view']);
+        this.router.navigate(['admin/view-users']);
       },
       error: (error) => {
         alert('Login failed. Please check your credentials.' + error.message);

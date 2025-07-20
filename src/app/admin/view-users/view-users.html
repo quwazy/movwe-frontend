@@ -1,1 +1,71 @@
-<p>view-users works!</p>
+<div class="main-div">
+  <div class="nav-bar-div">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="big-view">
+    <div class="header">
+      <h1>Users Preview</h1>
+    </div>
+  </div>
+  <div class=" left-right-container">
+  <div class="left-view">
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of userList" (click)="selectUser(user)">
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.active ? "Yes" : "No" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+
+  <div class="right-view">
+    <div class="search-id">
+      <form class="d-flex" (ngSubmit)="searchById()" #idForm="ngForm">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search by id"
+          aria-label="Search"
+          required
+          [(ngModel)]="searchIdBar"
+          name="searchId"
+        />
+        <button class="btn btn-outline-success" type="submit">
+          Search by id
+        </button>
+      </form>
+    </div>
+    <div class="single-view">
+      <div class="preview">
+        <h5>User Preview</h5>
+        <div class="editable-fields" *ngIf="selectedUser">
+          <p><strong>ID:</strong> {{ selectedUser.id }}
+          <strong>Active:</strong> {{ selectedUser.active ? "Yes" : "No" }}</p>
+          <input [(ngModel)]="selectedUser.email" placeholder="Email" />
+          <input [(ngModel)]="selectedUser.username" placeholder="Username" />
+          
+        </div>
+      </div>
+      <div class="actions">
+        <button>Status</button>
+        <button>Update</button>
+        <button>Delete</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

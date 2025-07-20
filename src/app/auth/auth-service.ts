@@ -8,9 +8,9 @@ import { LoginRequest, LoginResponse, CreateClient } from './auth.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  public readonly employeeApiUrl: string = `${auth.apiUrl}/employee`;
-  public readonly clientApiUrl: string = `${auth.apiUrl}/client`;
-  public readonly createClientApiUrl: string = `${auth.apiUrl}/createClient`;
+  public readonly employeeApiUrl: string = `${auth.apiUrl}/moderator`;
+  public readonly clientApiUrl: string = `${auth.apiUrl}/user`;
+  public readonly createClientApiUrl: string = `${auth.apiUrl}/createUser`;
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +20,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(this.clientApiUrl, loginRequest);
   }
 
-  loginEmployee(email: string, password: string): Observable<LoginResponse> {
+  loginModerator(email: string, password: string): Observable<LoginResponse> {
     this.clearToken();
     const loginRequest: LoginRequest = { email, password };
     return this.http.post<LoginResponse>(this.employeeApiUrl, loginRequest);

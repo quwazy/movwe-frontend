@@ -1,0 +1,103 @@
+.main-div {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.nav-bar-div {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ccc;
+}
+
+.big-view {
+  padding: 1rem;
+  text-align: center;
+}
+
+.left-right-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.left-view {
+  flex: 2;
+  padding: 1rem;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+}
+
+.left-view table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.left-view th, .left-view td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.left-view tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.right-view {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.search-id {
+  display: flex;
+  justify-content: center;
+}
+
+.search-id form {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-id input {
+  flex: 1;
+}
+
+.single-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.preview {
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actions button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.editable-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.editable-fields input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+}

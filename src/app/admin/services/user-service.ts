@@ -14,7 +14,7 @@ export class UserService {
 
   //Get by id
   getById(id: number): Observable<UserDto> {
-    return this.http.get<UserDto>(`${this.apiUrl}/getById/}${id}`);
+    return this.http.get<UserDto>(`${this.apiUrl}/getById/${id}`);
   }
 
   //Get all
