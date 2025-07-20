@@ -14,8 +14,8 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Username</th>
             <th>Email</th>
+            <th>Username</th>
             <th>Active</th>
           </tr>
         </thead>
@@ -57,13 +57,13 @@
           <strong>Active:</strong> {{ selectedUser.active ? "Yes" : "No" }}</p>
           <input [(ngModel)]="selectedUser.email" placeholder="Email" />
           <input [(ngModel)]="selectedUser.username" placeholder="Username" />
-          
+          <input [(ngModel)]="selectedUserPassword" placeholder="Password" />
         </div>
       </div>
       <div class="actions">
-        <button>Status</button>
-        <button>Update</button>
-        <button>Delete</button>
+        <button (click)="updateStatus()" [disabled]="!selectedUser">{{ selectedUser?.active ? "Deactivate" : "Activate"}}</button>
+        <button (click)="updateUser()" [disabled]="!selectedUser">Update</button>
+        <button (click)="confirmDelete()" [disabled]="!selectedUser">Delete</button>
       </div>
     </div>
   </div>

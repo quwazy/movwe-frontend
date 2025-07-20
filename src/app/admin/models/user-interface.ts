@@ -6,6 +6,7 @@ export interface UserDto {
 }
 
 export interface CreateUserDto {
+    username: string;
     email: string;
     password: string;
     info?: Info;
@@ -15,7 +16,8 @@ export interface CreateUserDto {
 export interface UpdateUserDto {
     id: number;
     email: string;
-    password: string;
+    password?: string;
+    username: string;
     info?: Info;
     address?: Address;
 }
